@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nagappagoud Ashok Patil | Computer Science Undergraduate & Frontend Developer</title>
+  <meta name="description" content="Personal developer portfolio of Nagappagoud Ashok Patil — Computer Science & Engineering undergraduate at GCEM Bengaluru, Captain at AWS Student Builder Group, Frontend Developer, and UI/UX Designer." />
+  <meta property="og:title" content="Nagappagoud Ashok Patil | Developer Portfolio" />
+  <meta property="og:description" content="Building Digital Experiences Through Code & Creativity. Explore projects, AWS SBG leadership, UI/UX internship, and certifications." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080B12'/%3E%3Cpath d='M18 46V18l28 28V18' stroke='%2300E5FF' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgPrimary: '#080B12',
+            bgSecondary: '#0D1421',
+            accentCyan: '#00E5FF',
+            accentBlue: '#2563EB',
+            textPrimary: '#F5F7FA',
+            textSecondary: '#9CA3AF',
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-bgPrimary text-textPrimary font-body antialiased selection:bg-accentCyan/20 selection:text-accentCyan overflow-x-hidden">
+
+  <!-- Page Loader -->
+  <div id="loader" class="fixed inset-0 z-50 bg-bgPrimary flex flex-col items-center justify-center transition-opacity duration-500">
+    <div class="font-heading text-2xl font-bold tracking-wider text-textPrimary mb-4">
+      NAGAPPAGOUD<span class="text-accentCyan">.</span>
+    </div>
+    <div class="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+      <div id="loader-bar" class="h-full bg-gradient-to-r from-accentCyan to-accentBlue w-0 transition-all duration-700 ease-out"></div>
+    </div>
+  </div>
+
+  <!-- Subtle Cursor Glow -->
+  <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-10 opacity-0 transition-opacity duration-300 hidden md:block"></div>
+
+  <!-- Interactive Particle Network Canvas -->
+  <canvas id="particle-canvas" class="fixed inset-0 z-0 pointer-events-none opacity-60"></canvas>
+
+  <!-- Floating Glassmorphism Navigation Bar -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="nav-container flex items-center justify-between px-5 py-3 rounded-2xl border border-transparent transition-all duration-300">
+        <a href="#home" class="font-heading text-xl font-bold tracking-tight flex items-center gap-2 group">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-accentCyan to-accentBlue flex items-center justify-center text-bgPrimary font-bold text-sm shadow-lg shadow-accentCyan/20 group-hover:scale-105 transition-transform">NP</span>
+          <span class="text-textPrimary">Nagappagoud<span class="text-accentCyan">.</span></span>
+        </a>
+
+        <!-- Desktop Links -->
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Primary Navigation">
+          <a href="#home" class="nav-link active px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Home</a>
+          <a href="#about" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">About</a>
+          <a href="#skills" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Skills</a>
+          <a href="#experience" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Experience</a>
+          <a href="#projects" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Projects</a>
+          <a href="#achievements" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Achievements</a>
+          <a href="#certifications" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Certifications</a>
+          <a href="#contact" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-textSecondary hover:text-textPrimary transition-colors">Contact</a>
+        </nav>
+
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="openResumeModal()" class="px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-white/5 hover:bg-accentCyan/15 text-accentCyan border border-accentCyan/30 transition-all">
+            Resume
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-textPrimary hover:border-accentCyan/40 transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="lg:hidden hidden max-w-7xl mx-auto px-4 sm:px-6 mt-2">
+      <div class="glass-card rounded-2xl p-4 border border-white/10 flex flex-col gap-1 shadow-2xl">
+        <a href="#home" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Home</a>
+        <a href="#about" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">About</a>
+        <a href="#skills" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Skills</a>
+        <a href="#experience" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Experience</a>
+        <a href="#projects" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Projects</a>
+        <a href="#achievements" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Achievements</a>
+        <a href="#certifications" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Certifications</a>
+        <a href="#contact" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-medium text-textSecondary hover:text-accentCyan hover:bg-white/5">Contact</a>
+        <button onclick="openResumeModal()" class="mt-2 w-full py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-accentCyan to-accentBlue text-bgPrimary">
+          View / Download Resume
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-20">
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center pt-28 pb-16 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Left Copy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="hero-stagger inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-bgSecondary/90 border border-accentCyan/25 text-xs font-medium text-accentCyan shadow-lg shadow-accentCyan/5">
+              <span class="w-2 h-2 rounded-full bg-accentCyan animate-pulse"></span>
+              <span>AWS Student Builder Group Captain • GCEM Bengaluru</span>
+            </div>
+
+            <div class="space-y-2">
+              <p class="hero-stagger text-sm sm:text-base font-semibold tracking-[0.22em] text-accentCyan uppercase">
+                HELLO, I'M
+              </p>
+              <h1 class="hero-stagger font-heading text-4xl sm:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]">
+                <span class="block text-textPrimary">NAGAPPAGOUD</span>
+                <span class="block animated-gradient-text">ASHOK PATIL</span>
+              </h1>
+            </div>
+
+            <div class="hero-stagger space-y-2">
+              <p class="text-lg sm:text-xl font-medium text-textPrimary">
+                Computer Science Undergraduate &bull;
+                <span id="role-rotator" class="text-accentCyan font-semibold inline-block min-w-[200px] transition-all duration-300">Frontend Developer</span>
+              </p>
+              <p class="text-base sm:text-lg text-textSecondary max-w-2xl leading-relaxed">
+                Building Digital Experiences Through Code &amp; Creativity. Focused on frontend engineering, intuitive UI/UX design, cloud builder communities, and practical AI-assisted applications.
+              </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-stagger flex flex-wrap items-center gap-4 pt-2">
+              <a href="#projects" class="magnetic-btn inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-accentCyan to-accentBlue text-bgPrimary shadow-lg shadow-accentCyan/20 hover:shadow-accentCyan/40 transition-all">
+                <span>Explore My Work</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+              <button onclick="openResumeModal()" class="magnetic-btn inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm bg-bgSecondary hover:bg-white/5 text-textPrimary border border-white/15 hover:border-accentCyan/50 transition-all">
+                <i data-lucide="file-text" class="w-4 h-4 text-accentCyan"></i>
+                <span>Download Resume</span>
+              </button>
+            </div>
+
+            <!-- Social Icon Links -->
+            <div class="hero-stagger flex items-center gap-4 pt-3">
+              <a href="https://github.com/nagappagoud" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-bgSecondary border border-white/10 flex items-center justify-center text-textSecondary hover:text-accentCyan hover:border-accentCyan/50 hover:-translate-y-0.5 transition-all">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/nagappagoud-patil-146a74372" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-11 h-11 rounded-xl bg-bgSecondary border border-white/10 flex items-center justify-center text-textSecondary hover:text-accentCyan hover:border-accentCyan/50 hover:-translate-y-0.5 transition-all">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+              <a href="mailto:nagappagouda1925@gmail.com" aria-label="Email" class="w-11 h-11 rounded-xl bg-bgSecondary border border-white/10 flex items-center justify-center text-textSecondary hover:text-accentCyan hover:border-accentCyan/50 hover:-translate-y-0.5 transition-all">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </a>
+              <span class="text-xs text-textSecondary pl-2 border-l border-white/10">
+                Bengaluru, Karnataka, India
+              </span>
+            </div>
+          </div>
+
+          <!-- Hero Right Portrait Frame -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end hero-stagger">
+            <div class="relative group w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96">
+              <!-- Outer Geometric Glow Rings -->
+              <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-tr from-accentCyan/30 via-accentBlue/20 to-transparent blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div class="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-accentCyan/50 via-white/10 to-accentBlue/50 p-[1.5px]">
+                <div class="w-full h-full rounded-[1.9rem] bg-bgSecondary"></div>
+              </div>
+
+              <!-- Portrait Container -->
+              <div class="relative w-full h-full rounded-[1.9rem] overflow-hidden bg-gradient-to-b from-slate-800/40 to-bgSecondary border border-white/10 shadow-2xl">
+                <img
+                  src="assets/Nagappagoud.jpg"
+                  alt="Nagappagoud Ashok Patil"
+                  class="w-full h-full object-cover object-top scale-[1.01] group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bgPrimary/90 via-bgPrimary/40 to-transparent"></div>
+                <div class="absolute bottom-4 inset-x-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-bgPrimary/80 backdrop-blur-md border border-white/10">
+                  <div>
+                    <p class="text-xs font-semibold text-textPrimary">B.E. CSE '29</p>
+                    <p class="text-[11px] text-accentCyan">GCEM Bengaluru</p>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider bg-accentCyan/15 text-accentCyan border border-accentCyan/30">
+                    Open to Internships
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Smooth Scroll Indicator -->
+        <div class="hidden md:flex justify-center mt-14">
+          <a href="#about" class="flex flex-col items-center gap-2 text-xs text-textSecondary hover:text-accentCyan transition-colors group">
+            <span class="tracking-widest uppercase text-[10px]">Scroll to explore</span>
+            <div class="w-5 h-8 rounded-full border border-white/20 group-hover:border-accentCyan/60 flex justify-center p-1">
+              <div class="w-1 h-2 rounded-full bg-accentCyan animate-bounce"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll max-w-3xl mb-14">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">01 // ABOUT ME</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+            Engineering User-Centered Software &amp; Leading Campus Cloud Builders.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-7 glass-card rounded-2xl p-7 sm:p-9 border border-white/10 space-y-5 reveal-on-scroll">
+            <p class="text-textPrimary text-base sm:text-lg leading-relaxed">
+              I am a Computer Science and Engineering undergraduate at <strong class="text-accentCyan font-medium">Gopalan College of Engineering and Management (GCEM), Bengaluru</strong> (Class of 2029), driven by building clean, functional digital products that solve practical problems.
+            </p>
+            <p class="text-textSecondary leading-relaxed">
+              My hands-on journey spans <strong class="text-textPrimary font-medium">frontend web development</strong>, <strong class="text-textPrimary font-medium">UI/UX design</strong>, and rapid prototyping with modern backend services like Supabase and Vercel. Through my internship at <strong class="text-textPrimary font-medium">FlyRank AI</strong> and open-source contributions during <strong class="text-textPrimary font-medium">Elite Coders Summer of Code 2026</strong>, I have focused on crafting reusable interfaces and intuitive user flows.
+            </p>
+            <p class="text-textSecondary leading-relaxed">
+              Beyond individual projects, I serve as <strong class="text-textPrimary font-medium">Captain of the AWS Student Builder Group (SBG) at GCEM</strong>—having progressed from Member to Core Team Member to Captain—where I coordinate workshops, technical sessions, and peer builder initiatives around cloud computing and generative AI.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-lg text-xs bg-white/5 text-textSecondary border border-white/10">Languages: English, Hindi, Kannada</span>
+              <span class="px-3 py-1 rounded-lg text-xs bg-white/5 text-textSecondary border border-white/10">Sem 1 SGPA: 8.2/10</span>
+              <span class="px-3 py-1 rounded-lg text-xs bg-white/5 text-textSecondary border border-white/10">Sem 2 SGPA: 7.3/10</span>
+            </div>
+          </div>
+
+          <!-- Info Cards -->
+          <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 reveal-on-scroll">
+            <div class="glass-card rounded-2xl p-5 border border-white/10 hover:border-accentCyan/40 transition-all flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center shrink-0 text-accentCyan">
+                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-textSecondary">Education</p>
+                <h3 class="font-heading font-semibold text-textPrimary text-base mt-0.5">B.E. Computer Science &amp; Engineering</h3>
+                <p class="text-xs text-textSecondary mt-1">GCEM, Bengaluru &bull; 2025 – 2029 (PU Aggregate: 82%)</p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-white/10 hover:border-accentCyan/40 transition-all flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center shrink-0 text-accentCyan">
+                <i data-lucide="cloud" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-textSecondary">Leadership</p>
+                <h3 class="font-heading font-semibold text-textPrimary text-base mt-0.5">Captain — AWS Student Builder Group</h3>
+                <p class="text-xs text-textSecondary mt-1">GCEM &bull; Member &rarr; Core Team &rarr; Captain</p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-white/10 hover:border-accentCyan/40 transition-all flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center shrink-0 text-accentCyan">
+                <i data-lucide="layout" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-textSecondary">Experience</p>
+                <h3 class="font-heading font-semibold text-textPrimary text-base mt-0.5">UI/UX Design Intern — FlyRank AI</h3>
+                <p class="text-xs text-textSecondary mt-1">Jul 2026 – Aug 2026 &bull; Product Interface &amp; Prototyping</p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-white/10 hover:border-accentCyan/40 transition-all flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center shrink-0 text-accentCyan">
+                <i data-lucide="git-branch" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-textSecondary">Open Source</p>
+                <h3 class="font-heading font-semibold text-textPrimary text-base mt-0.5">UI Components Contributor — ECSoC 2026</h3>
+                <p class="text-xs text-textSecondary mt-1">Jun 2026 – Sep 2026 &bull; Elite Coders Summer of Code</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="py-24 bg-bgSecondary/40 border-y border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll max-w-3xl mb-14">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">02 // TECHNICAL ARSENAL</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+            Core Technologies, Platforms &amp; Design Tools
+          </h2>
+          <p class="text-textSecondary mt-2 text-sm sm:text-base">
+            Verified tools and technologies applied across academic coursework, open-source contributions, and hackathon prototypes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Programming -->
+          <div class="skill-card glass-card rounded-2xl p-6 border border-white/10 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center text-accentCyan">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-textPrimary">Programming</h3>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">C</span>
+              <span class="skill-pill">C#</span>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="skill-card glass-card rounded-2xl p-6 border border-white/10 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="code-2" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-textPrimary">Web Development</h3>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">Frontend Web Development</span>
+              <span class="skill-pill">Responsive UI</span>
+            </div>
+          </div>
+
+          <!-- Backend & Deployment -->
+          <div class="skill-card glass-card rounded-2xl p-6 border border-white/10 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center text-accentCyan">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-textPrimary">Backend &amp; Deployment</h3>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="skill-pill">Supabase</span>
+              <span class="skill-pill">Vercel</span>
+            </div>
+          </div>
+
+          <!-- Developer Tools -->
+          <div class="skill-card glass-card rounded-2xl p-6 border border-white/10 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="wrench" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-textPrimary">Developer Tools</h3>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">GitHub</span>
+              <span class="skill-pill">Unix Fundamentals</span>
+            </div>
+          </div>
+
+          <!-- Design & AI -->
+          <div class="skill-card glass-card rounded-2xl p-6 border border-white/10 md:col-span-2 reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center text-accentCyan">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-textPrimary">Design &amp; AI</h3>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="skill-pill">UI/UX Design</span>
+              <span class="skill-pill">Prototyping</span>
+              <span class="skill-pill">Prompt Engineering</span>
+              <span class="skill-pill">Lovable AI</span>
+              <span class="skill-pill">Generative AI Tools</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXPERIENCE & LEADERSHIP TIMELINE -->
+    <section id="experience" class="py-24 relative">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll max-w-3xl mb-16">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">03 // EXPERIENCE &amp; LEADERSHIP</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+            Community Leadership, Internship &amp; Open Source
+          </h2>
+        </div>
+
+        <div class="relative border-l-2 border-white/10 ml-3 sm:ml-6 space-y-12">
+          <!-- Timeline Item 1 -->
+          <div class="relative pl-8 sm:pl-12 reveal-on-scroll">
+            <span class="timeline-node absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentCyan ring-4 ring-accentCyan/20"></span>
+            <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-accentCyan/40 transition-all">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-accentCyan/15 text-accentCyan border border-accentCyan/30 mb-2">
+                    Leadership Progression
+                  </span>
+                  <h3 class="font-heading text-xl font-bold text-textPrimary">Captain — AWS Student Builder Group (SBG)</h3>
+                  <p class="text-sm text-accentCyan font-medium">Gopalan College of Engineering and Management (GCEM), Bengaluru</p>
+                </div>
+                <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white/5 text-textSecondary border border-white/10">
+                  Feb 2026 – Present
+                </span>
+              </div>
+              <p class="text-xs text-textSecondary mb-4">
+                Progression: <span class="text-textPrimary font-medium">Member</span> (Feb 2026 – Jul 2026) &rarr; <span class="text-textPrimary font-medium">Core Team Member</span> (Aug 2026) &rarr; <span class="text-accentCyan font-semibold">Captain</span> (Present)
+              </p>
+              <ul class="space-y-2 text-sm text-textSecondary list-disc list-inside">
+                <li>Lead student builder initiatives, technical workshops, and cloud awareness sessions across campus.</li>
+                <li>Coordinate peer learning programs and developer community events focused on AWS cloud fundamentals and hands-on building.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative pl-8 sm:pl-12 reveal-on-scroll">
+            <span class="timeline-node absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentBlue ring-4 ring-accentBlue/25"></span>
+            <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-accentCyan/40 transition-all">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-accentBlue/20 text-blue-300 border border-accentBlue/30 mb-2">
+                    Internship
+                  </span>
+                  <h3 class="font-heading text-xl font-bold text-textPrimary">UI/UX Design Intern</h3>
+                  <p class="text-sm text-accentCyan font-medium">FlyRank AI &bull; Remote</p>
+                </div>
+                <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white/5 text-textSecondary border border-white/10">
+                  Jul 2026 – Aug 2026
+                </span>
+              </div>
+              <ul class="space-y-2 text-sm text-textSecondary list-disc list-inside">
+                <li>Designed intuitive user interfaces, wireframes, and interactive prototypes to improve product usability and visual hierarchy.</li>
+                <li>Collaborated with the product team to refine user flows and responsive layouts for AI-driven web features.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="relative pl-8 sm:pl-12 reveal-on-scroll">
+            <span class="timeline-node absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentCyan ring-4 ring-accentCyan/20"></span>
+            <div class="glass-card rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-accentCyan/40 transition-all">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 mb-2">
+                    Open Source
+                  </span>
+                  <h3 class="font-heading text-xl font-bold text-textPrimary">UI Components Contributor</h3>
+                  <p class="text-sm text-accentCyan font-medium">Elite Coders Summer of Code (ECSoC) 2026</p>
+                </div>
+                <span class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white/5 text-textSecondary border border-white/10">
+                  Jun 2026 – Sep 2026
+                </span>
+              </div>
+              <ul class="space-y-2 text-sm text-textSecondary list-disc list-inside">
+                <li>Developed and contributed modular, reusable frontend UI components to open-source repositories.</li>
+                <li>Followed Git/GitHub pull-request workflows, code reviews, and responsive design consistency standards.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-24 bg-bgSecondary/40 border-y border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll max-w-3xl mb-14">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">04 // FEATURED PROJECTS</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+            Selected Engineering &amp; Hackathon Builds
+          </h2>
+          <p class="text-textSecondary mt-2 text-sm sm:text-base">
+            Interactive prototypes and web applications built across hackathons and personal engineering explorations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+          <!-- Cards populated dynamically by script.js so modal data stays single-source-of-truth -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ACHIEVEMENTS & HACKATHONS SECTION -->
+    <section id="achievements" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal-on-scroll max-w-3xl mb-14">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">05 // ACHIEVEMENTS &amp; EVENTS</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+            Awards, Hackathons &amp; Tech Community Milestones
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Award Highlight -->
+          <div class="glass-card rounded-2xl p-6 border border-accentCyan/40 bg-gradient-to-br from-accentCyan/10 via-bgSecondary to-bgSecondary reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentCyan/20 border border-accentCyan/40 flex items-center justify-center text-accentCyan">
+                <i data-lucide="trophy" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-accentCyan text-bgPrimary">
+                Winner
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">Best UI/UX Award</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">Vibethon Hackathon</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Recognized for interface clarity, user experience design, and functional front-end execution during the hackathon.
+            </p>
+          </div>
+
+          <!-- SIH 2026 -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-accentCyan/35 transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 text-textSecondary border border-white/10">
+                Participant
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">Smart India Hackathon (SIH) 2026</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">National Hackathon</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Collaborated in a team sprint to ideate, architect, and prototype a structured software solution under national problem statements.
+            </p>
+          </div>
+
+          <!-- BMSCE Built Beyond 26 -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-accentCyan/35 transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 text-textSecondary border border-white/10">
+                Participant
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">BMSCE Built Beyond 26</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">24-Hour Hackathon &bull; BMS College of Engineering</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Built the Rupee Sentinel personal financial insights application with Supabase integration during an intensive 24-hour build.
+            </p>
+          </div>
+
+          <!-- GCEM Hacks 5.0 -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-accentCyan/35 transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="code" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 text-textSecondary border border-white/10">
+                Participant
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">GCEM Hacks 5.0</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">Gopalan College of Engineering and Management</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Designed and developed a rapid prototype solution within hackathon time constraints alongside peer developers.
+            </p>
+          </div>
+
+          <!-- AWS Community Events -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-accentCyan/35 transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="cloud-lightning" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 text-textSecondary border border-white/10">
+                Community Builder
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">AWS Community &amp; Builder Events</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">AWS Student Builder Ecosystem</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Active participant and student organizer in cloud architecture meetups, hands-on labs, and builder community sessions.
+            </p>
+          </div>
+
+          <!-- Bengaluru Tech Summit 2026 -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 hover:border-accentCyan/35 transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <span class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+              </span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/5 text-textSecondary border border-white/10">
+                Delegate
+              </span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-textPrimary">Bengaluru Tech Summit 2026</h3>
+            <p class="text-sm text-accentCyan font-medium mt-1">Bengaluru, Karnataka</p>
+            <p class="text-xs text-textSecondary mt-3 leading-relaxed">
+              Engaged with emerging trends across AI, cloud infrastructure, developer ecosystems, and enterprise software engineering.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CERTIFICATIONS SECTION -->
+    <section id="certifications" class="py-24 bg-bgSecondary/40 border-y border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-on-scroll">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan mb-2">06 // VERIFIED CREDENTIALS</p>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-textPrimary">
+              Certifications &amp; Coursework
+            </h2>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap gap-2" id="cert-filters">
+            <button data-filter="all" class="cert-filter-btn active px-4 py-2 rounded-xl text-xs font-semibold transition-all">All (11)</button>
+            <button data-filter="ai" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all">AI &amp; Generative AI</button>
+            <button data-filter="programming" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all">Programming</button>
+            <button data-filter="systems" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all">Cloud &amp; Systems</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="cert-grid">
+          <!-- Populated cleanly via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT SECTION -->
+    <section id="contact" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Contact Left Info -->
+          <div class="lg:col-span-5 space-y-6 reveal-on-scroll">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accentCyan">07 // GET IN TOUCH</p>
+            <h2 class="font-heading text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-textPrimary">
+              LET'S BUILD<br />
+              <span class="animated-gradient-text">SOMETHING GREAT.</span>
+            </h2>
+            <p class="text-textSecondary text-base leading-relaxed">
+              Have an interesting project, software engineering internship opportunity, or collaboration idea? Let's connect.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <a href="mailto:nagappagouda1925@gmail.com" class="glass-card rounded-2xl p-4 border border-white/10 hover:border-accentCyan/40 transition-all flex items-center gap-4 group">
+                <div class="w-11 h-11 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center text-accentCyan group-hover:scale-105 transition-transform">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-textSecondary">Email</p>
+                  <p class="text-sm font-medium text-textPrimary">nagappagouda1925@gmail.com</p>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/nagappagoud-patil-146a74372" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 border border-white/10 hover:border-accentCyan/40 transition-all flex items-center gap-4 group">
+                <div class="w-11 h-11 rounded-xl bg-accentBlue/15 border border-accentBlue/30 flex items-center justify-center text-accentCyan group-hover:scale-105 transition-transform">
+                  <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-textSecondary">LinkedIn</p>
+                  <p class="text-sm font-medium text-textPrimary">linkedin.com/in/nagappagoud-patil-146a74372</p>
+                </div>
+              </a>
+
+              <a href="https://github.com/nagappagoud" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 border border-white/10 hover:border-accentCyan/40 transition-all flex items-center gap-4 group">
+                <div class="w-11 h-11 rounded-xl bg-accentCyan/10 border border-accentCyan/25 flex items-center justify-center text-accentCyan group-hover:scale-105 transition-transform">
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-textSecondary">GitHub</p>
+                  <p class="text-sm font-medium text-textPrimary">github.com/nagappagoud</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Right Form -->
+          <div class="lg:col-span-7 glass-card rounded-2xl p-7 sm:p-9 border border-white/10 reveal-on-scroll">
+            <form id="contact-form" novalidate class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-textSecondary mb-2">Your Name *</label>
+                  <input type="text" id="name" name="name" required placeholder="Enter your name"
+                    class="w-full px-4 py-3 rounded-xl bg-bgPrimary/80 border border-white/10 text-textPrimary placeholder-textSecondary/50 text-sm focus:outline-none focus:border-accentCyan transition-colors" />
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-textSecondary mb-2">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="you@example.com"
+                    class="w-full px-4 py-3 rounded-xl bg-bgPrimary/80 border border-white/10 text-textPrimary placeholder-textSecondary/50 text-sm focus:outline-none focus:border-accentCyan transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="subject" class="block text-xs font-semibold uppercase tracking-wider text-textSecondary mb-2">Subject *</label>
+                <input type="text" id="subject" name="subject" required placeholder="Internship Opportunity / Project Collaboration"
+                  class="w-full px-4 py-3 rounded-xl bg-bgPrimary/80 border border-white/10 text-textPrimary placeholder-textSecondary/50 text-sm focus:outline-none focus:border-accentCyan transition-colors" />
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-textSecondary mb-2">Message *</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Write your message here..."
+                  class="w-full px-4 py-3 rounded-xl bg-bgPrimary/80 border border-white/10 text-textPrimary placeholder-textSecondary/50 text-sm focus:outline-none focus:border-accentCyan transition-colors resize-none"></textarea>
+              </div>
+
+              <!-- Transparent Static Site Integration Note -->
+              <div class="p-3.5 rounded-xl bg-accentBlue/10 border border-accentBlue/25 text-xs text-textSecondary flex items-start gap-2.5">
+                <i data-lucide="info" class="w-4 h-4 text-accentCyan shrink-0 mt-0.5"></i>
+                <span>
+                  Static Deployment Note: Submitting validates your fields and opens your default email client addressed to <strong class="text-textPrimary">nagappagouda1925@gmail.com</strong>. To enable direct server-side submissions on Vercel, connect a Formspree endpoint or a Vercel Serverless Function in <code class="text-accentCyan">script.js</code>.
+                </span>
+              </div>
+
+              <div id="form-feedback" class="hidden rounded-xl p-3.5 text-xs font-medium"></div>
+
+              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-accentCyan to-accentBlue text-bgPrimary shadow-lg shadow-accentCyan/20 hover:shadow-accentCyan/40 transition-all">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Compose &amp; Send Message</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-bgSecondary/60 py-8 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-textSecondary">
+      <p>&copy; 2026 Nagappagoud Ashok Patil. Built with HTML, Tailwind CSS &amp; Vanilla JavaScript.</p>
+      <div class="flex items-center gap-5">
+        <a href="#home" class="hover:text-accentCyan transition-colors">Back to Top</a>
+        <a href="https://github.com/nagappagoud" target="_blank" rel="noopener noreferrer" class="hover:text-accentCyan transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/nagappagoud-patil-146a74372" target="_blank" rel="noopener noreferrer" class="hover:text-accentCyan transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Details Modal -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-card bg-bgSecondary border border-white/15 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="closeProjectModal()" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-textSecondary hover:text-textPrimary">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Resume Preview & Print/PDF Modal -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-4xl w-full p-6 sm:p-10 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-slate-200 no-print">
+        <div>
+          <h3 class="font-heading text-lg font-bold text-slate-900">Resume Preview — Nagappagoud Ashok Patil</h3>
+          <p class="text-xs text-slate-500">Click "Save / Print PDF" to download a clean PDF copy directly from your browser.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors">
+            Save / Print PDF
+          </button>
+          <button onclick="closeResumeModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Content -->
+      <div id="printable-resume" class="space-y-5 text-sm leading-relaxed">
+        <div class="flex items-start justify-between gap-6 border-b-2 border-slate-800 pb-4">
+          <div>
+            <h1 class="text-2xl font-bold text-slate-900">Nagappagoud Ashok Patil</h1>
+            <p class="text-blue-700 font-semibold">Computer Science &amp; Engineering Undergraduate | AWS SBG Captain</p>
+            <p class="text-xs text-slate-600 mt-1.5">
+              Bengaluru, Karnataka, India &bull; +91 7338341925 &bull; nagappagouda1925@gmail.com<br/>
+              LinkedIn: linkedin.com/in/nagappagoud-patil-146a74372 &bull; GitHub: github.com/nagappagoud
+            </p>
+          </div>
+          <img src="assets/Nagappagoud.jpg" alt="Nagappagoud Ashok Patil" class="w-20 h-24 object-cover rounded-lg border border-slate-300 shrink-0" />
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-1 mb-2">Education</h2>
+          <p class="font-semibold text-slate-900">B.E. in Computer Science and Engineering — Gopalan College of Engineering and Management (GCEM), Bengaluru</p>
+          <p class="text-xs text-slate-600">Sep 2025 – Jul 2029 (Expected) | Semester 1 SGPA: 8.2/10 | Semester 2 SGPA: 7.3/10</p>
+          <p class="font-semibold text-slate-900 mt-2">Pre-University Education (PCMB) — Sanganabasava Residential PU College</p>
+          <p class="text-xs text-slate-600">Jul 2023 – Mar 2025 | Aggregate: 82%</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-1 mb-2">Leadership &amp; Experience</h2>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li><strong>Captain — AWS Student Builder Group (SBG), GCEM</strong> (Feb 2026 – Present): Progressed from Member to Core Team Member to Captain; lead AWS technical sessions, workshops, and student builder initiatives.</li>
+            <li><strong>UI/UX Design Intern — FlyRank AI</strong> (Jul 2026 – Aug 2026): Designed user interfaces, wireframes, and interactive prototypes for AI-powered web workflows.</li>
+            <li><strong>UI Components Contributor — Elite Coders Summer of Code (ECSoC) 2026</strong> (Jun 2026 – Sep 2026): Built reusable open-source UI components and collaborated via Git/GitHub pull requests.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-1 mb-2">Technical Skills</h2>
+          <p class="text-xs text-slate-700">
+            <strong>Programming:</strong> Python, C, C# &bull;
+            <strong>Web:</strong> HTML, Frontend Web Development &bull;
+            <strong>Backend &amp; Cloud:</strong> Supabase, Vercel &bull;
+            <strong>Tools:</strong> Git, GitHub, Unix Fundamentals &bull;
+            <strong>Design &amp; AI:</strong> UI/UX Design, Prototyping, Prompt Engineering, Lovable AI, Generative AI Tools
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-1 mb-2">Projects</h2>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li><strong>NEXO – Smart Attendance System</strong> (Frontend Web Development, Supabase, Vercel): Smart attendance application featuring user authentication, role-based workflows, and face verification functionality.</li>
+            <li><strong>Rupee Sentinel</strong> (Web Technologies, Supabase, AI-Assisted Development): Personal financial analysis prototype built at BMSCE Built Beyond 26 with bank statement parsing, categorized insights, and predictive expense analysis.</li>
+            <li><strong>Battery Red Flag</strong> (Web Frontend, AI-Assisted Prototyping): Hackathon battery health and diagnostics prototype highlighting risk indicators and diagnostic status.</li>
+            <li><strong>NapTrack</strong> (UI/UX Design, HTML, Lovable AI): Student time-management prototype supporting daily time blocking and schedule tracking.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-1 mb-2">Awards &amp; Participation</h2>
+          <p class="text-xs text-slate-700">
+            <strong>Best UI/UX Award</strong> – Vibethon Hackathon &bull; Participant: Smart India Hackathon (SIH) 2026, BMSCE Built Beyond 26, GCEM Hacks 5.0, AWS Community &amp; Builder Events &bull; Delegate: Bengaluru Tech Summit 2026.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>

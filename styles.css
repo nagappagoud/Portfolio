@@ -1,0 +1,171 @@
+/* Custom Properties & Glassmorphism System */
+:root {
+  --bg-primary: #080B12;
+  --bg-secondary: #0D1421;
+  --accent-cyan: #00E5FF;
+  --accent-blue: #2563EB;
+  --text-primary: #F5F7FA;
+  --text-secondary: #9CA3AF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(13, 20, 33, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Navbar Scrolled State */
+#navbar.scrolled .nav-container {
+  background: rgba(13, 20, 33, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+.nav-link.active {
+  color: #00E5FF;
+  background: rgba(0, 229, 255, 0.1);
+}
+
+/* Animated Gradient Text */
+.animated-gradient-text {
+  background: linear-gradient(120deg, #00E5FF 0%, #3B82F6 45%, #60A5FA 70%, #00E5FF 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientFlow 5s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 220% center; }
+}
+
+/* Skill Pill & Card Hover Glow */
+.skill-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 12px 30px -12px rgba(0, 229, 255, 0.25);
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #E5E7EB;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: all 0.25s ease;
+}
+
+.skill-pill:hover {
+  color: #00E5FF;
+  border-color: rgba(0, 229, 255, 0.45);
+  background: rgba(0, 229, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Project Card 3D Tilt & Border Lighting */
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 20px 45px -15px rgba(0, 229, 255, 0.2);
+}
+
+/* Certification Filter Buttons */
+.cert-filter-btn {
+  background: rgba(255, 255, 255, 0.04);
+  color: #9CA3AF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-filter-btn:hover {
+  color: #F5F7FA;
+  border-color: rgba(0, 229, 255, 0.35);
+}
+
+.cert-filter-btn.active {
+  background: linear-gradient(135deg, #00E5FF, #2563EB);
+  color: #080B12;
+  border-color: transparent;
+}
+
+/* Scroll Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Stagger */
+.hero-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+.hero-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll, .hero-stagger {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Print Styles for Resume PDF Export */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #resume-modal, #resume-modal * {
+    visibility: visible;
+  }
+  #resume-modal {
+    position: absolute;
+    inset: 0;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
